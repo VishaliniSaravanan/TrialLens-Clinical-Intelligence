@@ -1,0 +1,14 @@
+flask
+flask-cors
+pandas
+numpy
+pymupdf>=1.24
+qdrant-client
+networkx
+scikit-learn
+transformers
+torch
+sentence-transformers
+requests
+python-dateutil
+gunicorn
