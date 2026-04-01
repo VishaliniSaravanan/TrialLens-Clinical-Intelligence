@@ -74,6 +74,7 @@ triallens/
         UploadPage.jsx
         MetricsPage.jsx
         InflationPage.jsx
+        LandingPage.jsx
         ComparePage.jsx
         QueryPage.jsx
         GraphPage.jsx
