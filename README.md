@@ -25,9 +25,11 @@
 
 ## 📌 Overview
 
-**TrialLens** ingests clinical trial documents (PDF, DOCX, TXT, HTML) and runs a 9-stage automated pipeline — extracting 25+ statistical metrics, scoring abstract integrity, rating evidence quality, and surfacing a discourse knowledge graph. Everything outputs to a structured multi-page dashboard.
+The global clinical research ecosystem generates over **500,000 trial publications a year** — yet the tools to read, verify, and act on them haven't meaningfully changed in decades.
 
-> One paper. Under 60 seconds. Executive-grade analysis.
+**TrialLens** is a full-stack AI platform that ingests any clinical trial document — PDF, DOCX, TXT, or HTML — and delivers a structured intelligence dashboard covering statistics, evidence quality, abstract integrity, semantic search, benchmarking, and a discourse knowledge graph. All in under 60 seconds.
+
+> Built for organizations where trial evidence directly shapes product decisions, investment theses, regulatory submissions, and clinical policy.
 
 ---
 
@@ -39,6 +41,9 @@
 | Trials published on PubMed annually | **500,000+** |
 | Abstracts that overstate findings | **~40%** *(JAMA)* |
 | Cost of a failed Phase III trial | **$300M–$800M** |
+| Organizations with automated pre-submission evidence review | **Very few** |
+
+The gap isn't expertise — it's throughput. Pharma intelligence teams, investment analysts reviewing biotech portfolios, and regulatory affairs professionals all face the same bottleneck: too many papers, not enough structured tooling.
 
 ---
 
@@ -58,15 +63,15 @@
 
 ## 🔬 Core Novelties
 
-**1. HyperRAG** — Graph-augmented retrieval. Every vector hit is expanded through the IMRAD knowledge graph, surfacing linked evidence across methods, results, and discussion together.
+**1. HyperRAG** — Graph-augmented retrieval. Every vector hit is expanded through the IMRAD knowledge graph, surfacing linked evidence across methods, results, and discussion together — not isolated chunks.
 
-**2. Abstract Inflation Scoring** — Matches 8 claim patterns against 10 counter-evidence patterns at sentence level. Scores 0–100 (HIGH / MEDIUM / LOW). No other tool does this automatically.
+**2. Abstract Inflation Scoring** — Matches 8 claim patterns against 10 counter-evidence patterns at sentence level. Scores 0–100 with HIGH / MEDIUM / LOW classification. No other tool does this automatically — critical for anyone evaluating papers before committing resources.
 
-**3. Automated Oxford CEBM Grading** — Maps study design, sample size, and p-values to CEBM levels 1a–4, producing an A–D evidence rating without manual adjudication.
+**3. Automated Oxford CEBM Grading** — Maps study design, sample size, and p-values to CEBM levels 1a–4, producing an A–D evidence rating without manual adjudication. Standardized, repeatable, audit-ready.
 
-**4. Discourse Knowledge Graph** — Each sentence is classified as Claim, Evidence, or Vague and placed in a directed graph with `contradicts` / `supports` edges — making hidden contradictions visible.
+**4. Discourse Knowledge Graph** — Each sentence classified as Claim, Evidence, or Vague, placed in a directed graph with `contradicts` / `supports` edges. Makes hidden contradictions visible at a glance.
 
-**5. Disease-Area Benchmarking** — Papers are scored against 10 therapeutic area reference norms and ranked against all other uploaded papers in the same area.
+**5. Disease-Area Benchmarking** — Papers scored against 10 therapeutic area reference norms and ranked against all other uploaded papers. Instantly see how a trial stacks up against the field.
 
 ---
 
@@ -83,67 +88,29 @@
 | 🔍 | HyperRAG Search | Graph-expanded semantic search with section filter |
 | 🤖 | AI Assistant | Multi-turn Claude chat grounded in paper context |
 | 📈 | Disease Benchmarking | 10 area norms · peer comparison table |
-| 🔒 | Private Deployment | Qdrant on-disk · no data leaves your environment |
-
----
-
-## 🛠️ Tech Stack
-
-### Backend
-
-| Technology | Badge | Purpose |
-|---|---|---|
-| Python 3.10+ | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white) | Core runtime |
-| Flask + Flask-CORS | ![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white) | REST API · port 5002 |
-| PyMuPDF | ![PyMuPDF](https://img.shields.io/badge/PyMuPDF-1.24+-CC3333?style=flat) | PDF extraction + table detection |
-| HuggingFace Transformers | ![HuggingFace](https://img.shields.io/badge/HuggingFace-FFD21E?style=flat&logo=huggingface&logoColor=black) | `all-MiniLM-L6-v2` · 384-dim embeddings |
-| Qdrant | ![Qdrant](https://img.shields.io/badge/Qdrant-DC143C?style=flat) | On-disk cosine vector search |
-| NetworkX | ![NetworkX](https://img.shields.io/badge/NetworkX-Graph-4B8BBE?style=flat) | HyperRAG + discourse graph |
-| scikit-learn | ![sklearn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white) | ML utilities |
-| python-docx | ![docx](https://img.shields.io/badge/python--docx-2B579A?style=flat&logo=microsoft-word&logoColor=white) | DOCX parsing |
-| Gunicorn | ![Gunicorn](https://img.shields.io/badge/Gunicorn-499848?style=flat&logo=gunicorn&logoColor=white) | Production WSGI server |
-
-### Frontend
-
-| Technology | Badge | Purpose |
-|---|---|---|
-| React 18 | ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black) | UI components |
-| Vite 5 | ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat&logo=vite&logoColor=white) | Build tool · port 5173 |
-| Recharts | ![Recharts](https://img.shields.io/badge/Recharts-22b5e8?style=flat) | Radar, Bar, Line charts |
-| HTML5 Canvas | ![Canvas](https://img.shields.io/badge/Canvas-Force%20Graph-E34F26?style=flat&logo=html5&logoColor=white) | Force-directed knowledge graph |
-| Lucide React | ![Lucide](https://img.shields.io/badge/Lucide-Icons-f59e0b?style=flat) | Icon system |
-| CSS Custom Properties | ![CSS](https://img.shields.io/badge/CSS-Design%20System-1572B6?style=flat&logo=css3&logoColor=white) | Navy/teal dark theme |
+| 🔒 | Private Deployment | Qdrant on-disk · API-first · no data leaves your environment |
 
 ---
 
 ## 🎯 Who It's For
 
-| Persona | How TrialLens Helps |
+| Persona | Value Delivered |
 |---|---|
-| 👩‍🔬 Clinical Researchers | Replace hours of manual stat hunting with instant extraction |
-| 💊 Pharma Intelligence Teams | Benchmark competitor trials against disease-area norms |
-| 📋 Regulatory Affairs | Flag abstract inflation and weak evidence before submission |
-| 🏥 Hospital R&D | Fast-track evidence review for clinical policy decisions |
-| 🌱 VC / Investment Analysts | Audit trial quality during biotech due diligence |
+| 👩‍🔬 Clinical Researchers | Replace 4–6 hours of manual stat review with instant structured extraction |
+| 💊 Pharma Intelligence Teams | Benchmark competitor trials against disease-area norms at scale |
+| 📋 Regulatory Affairs | Catch abstract inflation and evidence quality issues before submission |
+| 🏥 Hospital & Health Systems | Fast-track evidence review for formulary and clinical policy decisions |
+| 🌱 Life Science Investors | Audit trial evidence quality and spot over-claimed results during due diligence |
+| ⚡ Health Tech Platforms | Embed as a white-label intelligence layer via clean REST API |
 
 ---
 
-## 🤝 Partners
+## 🌍 Impact
 
-**🌞 Sun Pharma** — Speeds up competitive intelligence and regulatory review across large trial portfolios.
-
-**🌱 Marichi Ventures** — Supports evidence quality checks during biotech investment screening.
-
-**⚡ A2Z4.0** — API-first design enables white-label deployment within existing clinical data platforms.
-
----
-
-## 🌍 Societal Impact
-
-- **Personalized treatment** — Accurate CEBM grading helps clinicians choose therapies backed by genuine evidence.
-- **Drug safety** — AE extraction and contradiction detection surface hidden safety signals.
-- **Equitable access** — Open-source, locally deployable — no subscription cost for researchers in LMICs.
-- **Preventive care** — Faster evidence synthesis helps public health bodies identify and scale interventions.
+- **Better treatment decisions** — Standardized CEBM grading means clinicians and payers act on real Level A/B evidence, not inflated abstracts.
+- **Faster drug development** — Catching evidence quality issues early reduces costly late-stage failures.
+- **Transparent research** — Discourse contradiction graphs surface where published claims diverge from reported data.
+- **Equitable access** — Open-source, locally deployable, zero subscription cost — available to research teams anywhere in the world.
 
 ---
 
@@ -337,9 +304,5 @@ MIT — see `LICENSE` for details.
 <div align="center">
 
 **TrialLens — Because every clinical decision deserves better evidence.**
-
-[![Sun Pharma](https://img.shields.io/badge/Partner-Sun%20Pharma-orange?style=for-the-badge)](https://sunpharma.com)
-[![Marichi Ventures](https://img.shields.io/badge/Partner-Marichi%20Ventures-green?style=for-the-badge)](https://marichiventures.com)
-[![A2Z4.0](https://img.shields.io/badge/Partner-A2Z4.0-blue?style=for-the-badge)](https://a2z4.com)
 
 </div>
