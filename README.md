@@ -214,6 +214,8 @@ triallens/
 
 ## 🔄 Technical Workflow
 
+<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/74f97047-32b6-4657-b11c-bbe2c499ef75" />
+
 ```
   INPUT (PDF / DOCX / TXT / HTML / URL)
           │
