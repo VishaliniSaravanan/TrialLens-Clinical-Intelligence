@@ -216,41 +216,6 @@ triallens/
 
 <img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/74f97047-32b6-4657-b11c-bbe2c499ef75" />
 
-```
-  INPUT (PDF / DOCX / TXT / HTML / URL)
-          │
-          ▼
-  1. PARSE ──────────── PyMuPDF · python-docx · IMRAD section detection
-          │
-          ▼
-  2. VALIDATE ────────── 30 clinical keywords · min 4 hits · 50 MB limit
-          │
-          ▼
-  3. CHUNK ───────────── ~600 tokens · sentence boundaries · section tags
-          │
-          ▼
-  4. EMBED + INDEX ───── all-MiniLM-L6-v2 · Qdrant cosine · batch 100
-          │
-          ▼
-  5. BUILD HYPERRAG ──── NetworkX graph · section nodes · weighted edges
-          │
-          ▼
-  6. EXTRACT METRICS ─── 25+ regex extractors · p · CI · HR · OR · RR
-          │
-          ▼
-  7. INFLATION SCORE ─── claim vs evidence patterns · score 0–100
-          │
-          ▼
-  8. EVIDENCE GRADE ──── Oxford CEBM 1a–4 → A–D rating
-          │
-          ▼
-  9. BENCHMARK ────────── 10 disease area norms · peer registry
-          │
-          ▼
-  DASHBOARD  📊 Metrics · 🕵️ Inflation · 🌐 Graph · 🔍 Search · 🤖 AI
-```
-
----
 
 ## 🏥 Disease Area Benchmarks
 
